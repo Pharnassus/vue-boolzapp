@@ -5,5 +5,79 @@
 }
 
 body{
-  background: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(#009688, #009688 17%, #DBDBD3 , #DBDBD3 17%);
+}
+.clearfix::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.window{
+  background: white;
+  width: 80%;
+  height: 93%;
+}
+
+.window_left{
+  background: white;
+  width: 35%;
+  height: 100%;
+  float: left;
+}
+.header_left{
+  background: black;
+  height: 25%;
+}
+.heder_top{
+  background: #EAEAEA;
+  height: 40%;
+  width: 100%;
+}
+.heder_bottom{
+  background: #8EDAFC;
+  height: 40%;
+  width: 100%;
+}
+.heder_input{
+  background: #FAFAFA;
+  height: 20%;
+  width: 100%;
+}
+.main_left{
+  overflow-y: scroll;
+  height: calc(100% - 25%);
+}
+
+.window_right{
+  background-image: url('../img/boolzapp.jpg');
+  object-fit: cover;
+  object-position: center;
+  border-left: 2px solid #D6D6D6;
+  width: 65%;
+  height: 100%;
+  float: left;
+  z-index: 1;
+}
+.header_right{
+  background: #EAEAEA;
+  z-index: 2;
+  height: 10%;
+  width: 100%;
+}
+.main_right{
+  background-color: rgba(182, 158, 128, 0.4);
+  height: calc(100% - 20%);
+  overflow-y: scroll;
+  padding: 8% 10% 3%;
+}
+.footer_right{
+  background: #EAEAEA;
+  z-index: 2;
+  height: 10%;
+  width: 100%;
 }
