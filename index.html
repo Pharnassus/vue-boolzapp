@@ -63,7 +63,17 @@
         </div>
 
         <div class="main_left">
+          <ul>
+            <li v-for="key in contacts" class="clearfix">
+              <div class="img_contact">
+                <img class="img_top" :src="key.avatar" alt="Avatar">
+              </div>
 
+              <div class="name_contact">
+                <span>{{key.name}}</span>
+              </div>
+            </li>
+          </ul>
         </div>
 
       </div>
