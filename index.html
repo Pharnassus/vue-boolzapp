@@ -100,10 +100,9 @@
 
         <div class="main_right clearfix">
 
-          <div class="chat_message">
-              <p class="message my_message">Hai portato a spasso il cane?</p>
-              <p class="message my_message">Ricordati di dargli da mangiare</p>
-              <p class="message other_message">Tutto fatto</p>
+          <div v-for="(key, index) in contacts" class="chat_message">
+              <p class="message my_message">{{key.messages[0].text}}</p>
+              <!-- <p class="message other_message">{{key.messages[].text}}</p> -->
           </div>
 
         </div>
