@@ -31,7 +31,7 @@ input:focus {
 }
 .message{
   background: white;
-  width: 80%;
+  width: 45%;
   height: auto;
   border-radius: 7px;
   margin-bottom: 7px;
@@ -253,27 +253,18 @@ input:focus {
   overflow-y: scroll;
   padding: 8% 10% 3%;
 }
-.other_chat{
-  /* background: green; */
-  width: 50%;
+
+.chat_message{
+  width: 100%;
   height: 100%;
-  float: left;
+  display: flex;
+  flex-direction: column;
 }
 .other_message{
-  margin-top: 85px;
-}
-.my_chat{
-  /* background: darkgreen; */
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  width: 50%;
-  height: 100%;
-  float: left;
 }
 .my_message{
   background: #D5F9BA;
+  align-self: flex-end;
 }
 
 .footer_right{
@@ -287,8 +278,10 @@ input:focus {
 .footer_right i{
   display: block;
   color: #6B7376;
+  padding: 10px 0;
   font-size: 23px;
   text-align: center;
+  cursor: pointer;
 }
 
 .emoticon_footer{
