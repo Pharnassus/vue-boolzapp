@@ -69,7 +69,7 @@ var boolzApp = new Vue({
         ],
       },
       {
-        name: 'Luisa',
+        name: 'Nicole',
         avatar: 'img/avatar_5.png',
         visible: true,
         messages: [
@@ -82,6 +82,11 @@ var boolzApp = new Vue({
             date: '10/01/2020 15:50:00',
             text: 'Si, ma preferirei andare al cinema',
             status: 'received'
+          },
+          {
+            date: '10/01/2020 15:30:55',
+            text: 'Lo sai che ha aperto una nuova pizzeria?',
+            status: 'sent'
           }
         ],
       },
