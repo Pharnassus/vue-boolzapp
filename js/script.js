@@ -90,9 +90,13 @@ var boolzApp = new Vue({
           }
         ],
       },
-    ]
+    ],
+    chat: {},
   },
   methods: {
-
+    selectContact: function(key) {
+      this.chat = key;
+      console.log(this.chat);
+    }
   }
 });

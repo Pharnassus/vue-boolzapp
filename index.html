@@ -64,7 +64,7 @@
 
         <div class="main_left">
           <ul>
-            <li v-for="key in contacts" class="clearfix">
+            <li @click="selectContact(key)" v-for="key in contacts" class="clearfix">
               <div class="img_contact">
                 <img class="img_top" :src="key.avatar" alt="Avatar">
               </div>
@@ -100,10 +100,9 @@
 
         <div class="main_right clearfix">
 
-          <div v-for="(key, index) in contacts" class="chat_message">
-              <p class="message my_message">{{key.messages[0].text}}</p>
-              <p class="message my_message">{{key.messages[1].text}}</p>
-              <p class="message other_message">{{key.messages[2].text}}</p>
+          <div v-for="(message) in chat.messages" class="chat_message">
+              <p v-if="message.status === 'sent'" class="message my_message">{{message.text}}</p>
+              <p v-else class="message other_message">{{message.text}}</p>
           </div>
 
         </div>
