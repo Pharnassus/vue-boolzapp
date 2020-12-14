@@ -114,7 +114,7 @@
           </div>
 
           <div class="input_footer">
-            <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <input v-model="myNewMessage" @keyup.enter="addMyMessage" type="text" name="" value="" placeholder="Scrivi un messaggio">
           </div>
 
           <div class="voice_footer">
