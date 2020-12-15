@@ -190,6 +190,9 @@ li{
   overflow-y: scroll;
   height: calc(100% - 25%);
 }
+.main_left li{
+  cursor: pointer;
+}
 .active{
   background: #E9EBEB;
 }

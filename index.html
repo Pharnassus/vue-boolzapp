@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <!-- ms_CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- dayjs CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.7/dayjs.min.js" integrity="sha512-kZ+x2gdehn6OZMWZSp3Vt5R+v9hQTYEATQwaUfWquhxbvNVAy6IRtYs7asdyxKUTqG0I5ZqBqnzcBrpnHJCAGw==" crossorigin="anonymous"></script>
     <!-- JQueryCDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- handlebarsCDN -->
@@ -64,13 +66,15 @@
 
         <div class="main_left">
           <ul>
-            <li @click="selectContact(key)" v-for="key in contacts" class="clearfix">
+            <li v-for="(contact, index) in contacts"
+              :class="(index == activeContactIndex) ? 'active' : ''"
+              @click="setActiveContactIndex(index)"
+              class="clearfix">
               <div class="img_contact">
-                <img class="img_top" :src="key.avatar" alt="Avatar">
+                <img class="img_top" :src="contact.avatar" alt="Avatar">
               </div>
-
               <div class="name_contact">
-                <span>{{key.name}}</span>
+                <span>{{contact.name}}</span>
               </div>
             </li>
           </ul>
@@ -83,11 +87,11 @@
         <div class="header_right clearfix">
 
           <div class="top_img_right">
-            <img class="img_top" src="img/avatar_2.png" alt="Avatar">
+            <img class="img_top" :src="contacts[activeContactIndex].avatar" alt="Avatar">
           </div>
 
           <div class="top_username_right">
-            <span>Michele</span>
+            <span>{{contacts[activeContactIndex].name}}</span>
             <span>Ultimo accesso oggi 10/01/2020 alle 16:15:22</span>
           </div>
 
@@ -100,7 +104,7 @@
 
         <div class="main_right clearfix">
 
-          <div v-for="(message) in chat.messages" class="chat_message">
+          <div v-for="message in contacts[activeContactIndex].messages" class="chat_message">
               <p v-if="message.status === 'sent'" class="message my_message">{{message.text}}</p>
               <p v-else class="message other_message">{{message.text}}</p>
           </div>
@@ -114,7 +118,11 @@
           </div>
 
           <div class="input_footer">
-            <input v-model="myNewMessage" @keyup.enter="addMyMessage" type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <input
+              v-model="newMessage"
+              @keyup.enter="addNewMessage"
+              type="text" name="" value=""
+              placeholder="Scrivi un nuovo messaggio">
           </div>
 
           <div class="voice_footer">

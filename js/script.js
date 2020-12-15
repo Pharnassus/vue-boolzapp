@@ -86,18 +86,38 @@ var boolzApp = new Vue({
         ],
       },
     ],
-    chat: {},
-    myNewMessage: '',
+    //indice nei contatti [questa è la chiave di tutto l'esercizio]
+    activeContactIndex: 0,
+    // chat: {},
+    newMessage: '',
   },
   methods: {
-    selectContact: function(key) {
-      this.chat = key;
-      // console.log(this.chat);
-    }
-  },
-  addMyMessage: function() {
-      const newMessage = this.myNewMessage;
-      this.myNewMessage.push(newMessage);
-      this.myNewMessage = '';
+    setActiveContactIndex: function(newIndex) {
+      this.activeContactIndex = newIndex;
     },
+    // selectContact: function(key) {
+      //   this.chat = key;
+      //   // console.log(this.chat);
+      // },
+
+    addNewMessage: function() {
+      var newObj = {
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+        text: this.newMessage,
+        status: 'sent'
+      };
+      this.contacts[this.activeContactIndex].messages.push(newObj);
+      this.newMessage = '';
+
+      //bot-risposta 1s
+      setTimeout(function() {
+        var newBot = {
+          date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+          text: 'VAFFANCULO!',
+          status: 'received'
+        };
+        boolzApp.contacts[boolzApp.activeContactIndex].messages.push(newBot);
+      }, 1000);
+    },
+  },
 });
