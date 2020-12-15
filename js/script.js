@@ -113,11 +113,20 @@ var boolzApp = new Vue({
       setTimeout(function() {
         var newBot = {
           date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-          text: 'VAFFANCULO!',
+          text: 'ok',
           status: 'received'
         };
         boolzApp.contacts[boolzApp.activeContactIndex].messages.push(newBot);
       }, 1000);
     },
+    
+    filterNames: function(array, letter) {
+      var newArray = array.filter(
+        (element) => {
+          return element[0] == letter;
+        }
+      );
+      return newArray;
+    }
   },
 });
