@@ -59,7 +59,11 @@
             </div>
 
             <div class="input_chat">
-              <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+              <input type="text" name="" value=""
+                placeholder="Cerca o inizia una nuova chat"
+                v-model="searchText"
+                @keydown.enter="filterContacts"
+                @keyup="filterContacts"><!--  qui basta la digitazione, senza premere invio-->
             </div>
           </div>
         </div>
@@ -69,6 +73,7 @@
             <li v-for="(contact, index) in contacts"
               :class="(index == activeContactIndex) ? 'active' : ''"
               @click="setActiveContactIndex(index)"
+              v-if="contact.visible"
               class="clearfix">
               <div class="img_contact">
                 <img class="img_top" :src="contact.avatar" alt="Avatar">

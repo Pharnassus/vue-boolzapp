@@ -90,6 +90,7 @@ var boolzApp = new Vue({
     activeContactIndex: 0,
     // chat: {},
     newMessage: '',
+    searchText: '',
   },
   methods: {
     setActiveContactIndex: function(newIndex) {
@@ -113,20 +114,25 @@ var boolzApp = new Vue({
       setTimeout(function() {
         var newBot = {
           date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-          text: 'ok',
+          text: 'Ricevuto :)',
           status: 'received'
         };
         boolzApp.contacts[boolzApp.activeContactIndex].messages.push(newBot);
       }, 1000);
     },
-    
-    filterNames: function(array, letter) {
-      var newArray = array.filter(
-        (element) => {
-          return element[0] == letter;
-        }
-      );
-      return newArray;
+
+    filterContacts: function() {
+      console.log('filter');
+      this.contacts.forEach(
+        (element, index) => {
+          // console.log(element.name);
+          if (element.name.toLowerCase().includes(this.searchText.toLowerCase())) {
+            element.visible = true;
+          } else {
+            element.visible = false;
+          }
+      });
+
     }
   },
 });
